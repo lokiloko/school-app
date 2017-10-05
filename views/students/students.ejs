@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Halaman Student</title>
+  </head>
+  <body>
+    <table border="1px solid black">
+      <thead>
+        <th>ID</th>
+        <th>FIRST NAME</th>
+        <th>LAST NAME</th>
+        <th>EMAIL</th>
+        <th colspan="3">STATUS</th>
+      </thead>
+      <tbody>
+        <% dataStudent.forEach(rows => { %>
+          <tr>
+            <td><%= rows.id %></td>
+            <td><%= rows.first_name %></td>
+            <td><%= rows.last_name %></td>
+            <td><%= rows.email %></td>
+            <td><a href="/students/add">Add</a></td>
+            <td><a href="/students/edit/<%= rows.id %>">EDIT</a></td>
+            <td><a href="/students/delete/<%= rows.id %>">HAPUS</a></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>

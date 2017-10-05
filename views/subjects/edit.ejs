@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Ini Adalah Halaman Edit Subject</h1>
+  </body>
+  <form class="" action="/subjects/edit/<%= dataSubject.id %>" method="post">
+    <input type="text" name="subject_name" value="<%= dataSubject.subject_name %>" required>
+    <input type="submit" value="SUBMIT">
+  </form>
+</html>

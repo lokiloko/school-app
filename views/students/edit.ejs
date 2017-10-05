@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Ini Adalah Halaman Edit Student</h1>
+    <% if (dataError) { %>
+      <p><%= dataError %></p>
+    <% }%>
+  </body>
+  <form class="" action="/students/edit/<%= dataStudent.id %>" method="post">
+    <input type="text" name="first_name" value="<%= dataStudent.first_name %>" required>
+    <input type="text" name="last_name" value="<%= dataStudent.last_name %>" required>
+    <input type="text" name="email" value="<%= dataStudent.email %>">
+    <input type="submit" value="SUBMIT">
+  </form>
+</html>

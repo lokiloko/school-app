@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Ini Adalah Halaman Add Student</h1>
+    <% if (dataError) { %>
+      <p><%= dataError %></p>
+    <% }%>
+  </body>
+  <form class="" action="/students/add" method="post">
+    <input type="text" name="first_name" placeholder="Input Nama Depan" required>
+    <input type="text" name="last_name" placeholder="Input Nama Belakang" required>
+    <input type="text" name="email" placeholder="Input Nama Email Disini" required>
+    <input type="submit" value="SUBMIT">
+  </form>
+</html>
