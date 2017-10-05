@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Teachers</title>
+  </head>
+  <body>
+    <h1>Halaman Edit Teachers</h1>
+    <table>
+      <form action="/teachers/edit/<%= dataTeachers.id%>" method="post">
+        First name:<br>
+        <input type="text" name="first_name" value="<%=dataTeachers.first_name%>">
+        <br>
+        Last name:<br>
+        <input type="text" name="last_name" value="<%=dataTeachers.last_name%>">
+        <br>
+        Email:<br>
+        <input type="email" name="email" value="<%=dataTeachers.email%>">
+        <br>
+        <button type="submit" name="button">Save</button>
+      </form>
+    </table>
+  </body>
+</html>
