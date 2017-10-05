@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Student</title>
+  </head>
+  <body>
+    <a href="/">Back</a>
+    <h2><%= message %></h2>
+    <br />
+    <table border="5">
+      <tr>
+        <td>ID</td>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Email</td>
+        <td>Full Name</td>
+        <td colspan="2">Action</td>
+      </tr>
+      <%
+        for(var i = 0;i<dataRows.length;i++) {
+          %>
+          <tr>
+            <td><%= dataRows[i].id %></td>
+            <td><%= dataRows[i].first_name %></td>
+            <td><%= dataRows[i].last_name %></td>
+            <td><%= dataRows[i].email %></td>
+            <td><%= dataRows[i].fullname() %></td>
+            <td><a href="/students/edit/<%= dataRows[i].id %>">Edit</a></td>
+            <td><a href="/students/delete/<%= dataRows[i].id %>">Delete</a></td>
+          </tr>
+          <%
+        }
+      %>
+    </table>
+    <br />
+    <a href="/students/add">Add new Student</a>
+  </body>
+</html>
