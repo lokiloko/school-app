@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add New Student</title>
+  </head>
+  <body>
+    <form action="/students/edit/<%= dataRows.id %>" method="post">
+      <input type="hidden" name="id" value="<%= dataRows.id %>">
+      First Name<input type="text" name="first_name" placeholder="First Name" value="<%= dataRows.first_name %>"><br>
+      Last Name<input type="text" name="last_name" placeholder="Last Name" value="<%= dataRows.last_name %>"><br>
+      Email<input type="text" name="email" placeholder=" Email " value="<%= dataRows.email %>"><br>
+      <input type="submit" value="SUBMIT">
+    </form>
+  </body>
+</html>
