@@ -1,0 +1,28 @@
+<% include partials/header.ejs %>
+  <br />
+  <div class="rows">
+    <div class="col s12 center">
+      <div class="card-panel teal lighten-2">
+        <a href="/students" class="btn-floating btn-large waves-effect waves-light red left"><i class="material-icons left">backspace</i></a>
+        <%= pageTitle %>
+      </div>
+    </div>
+  </div>
+  <br >
+  <form action="/students/edit/<%= dataRows.id %>" method="post">
+    <input type="hidden" name="id" value="<%= dataRows.id %>">
+    <div class="input-field">
+      <input type="text" name="first_name" placeholder="First Name" value="<%= dataRows.first_name %>">
+      <label for="first_name">First Name</label>
+    </div>
+    <div class="input-field">
+      <input type="text" name="last_name" placeholder="Last Name" value="<%= dataRows.last_name %>">
+      <label for="last_name">Last Name</label>
+    </div>
+    <div class="input-field">
+      <input type="text" name="email" placeholder=" Email " value="<%= dataRows.email %>">
+      <label for="email">Email</label>
+    </div>
+    <input type="submit" value="SUBMIT" class="waves-effect waves-light btn">
+  </form>
+  <% include partials/footer.ejs %>

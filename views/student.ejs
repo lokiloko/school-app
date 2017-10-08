@@ -1,0 +1,59 @@
+<% include partials/header.ejs %>
+  <h2><%= message %></h2>
+  <br />
+  <div class="rows">
+    <div class="col s12 center">
+      <div class="card-panel teal lighten-2">
+        <a href="/" class="btn-floating btn-large waves-effect waves-light red left"><i class="material-icons left">backspace</i></a>
+        <%= pageTitle %>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="rows">
+    <table id="example" class="table responsive centered highlight bordered striped light-green" border="5">
+      <thead>
+        <tr>
+          <td>ID</td>
+          <td>First Name</td>
+          <td>Last Name</td>
+          <td>Email</td>
+          <td>Full Name</td>
+          <td></td>
+          <td>Action</td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <%
+        for(var i = 0;i<dataRows.length;i++) {
+          %>
+          <tr>
+            <td>
+              <%= dataRows[i].id %>
+            </td>
+            <td>
+              <%= dataRows[i].first_name %>
+            </td>
+            <td>
+              <%= dataRows[i].last_name %>
+            </td>
+            <td>
+              <%= dataRows[i].email %>
+            </td>
+            <td>
+              <%= dataRows[i].fullname() %>
+            </td>
+            <td><a href="/students/edit/<%= dataRows[i].id %>" class="waves-effect waves-light btn light-blue">Edit</a></td>
+            <td><a href="/students/delete/<%= dataRows[i].id %>" class="waves-effect waves-light btn red">Delete</a></td>
+            <td><a href="/students/<%= dataRows[i].id %>/addsubject" class="waves-effect waves-light btn">AddSubject</a></td>
+          </tr>
+          <%
+        }
+      %>
+      </tbody>
+    </table>
+    <br />
+    <a href="/students/add" class="waves-effect waves-light btn">Add new Student<i class="material-icons left">add</i></a>
+  </div>
+  <% include partials/footer.ejs %>
