@@ -47,7 +47,7 @@
             <%= dataRows[i].subject == null ? "unassigned" : dataRows[i].subject.subject_name %>
           </td>
           <td><a href="/teachers/edit/<%= dataRows[i].id %>" class="waves-effect waves-light btn light-blue">Edit</a></td>
-          <td><a href="/teachers/delete/<%= dataRows[i].id %>" class="waves-effect waves-light btn red">Delete</a></td>
+          <td><a onclick="return confirm('Are you sure?')" href="/teachers/delete/<%= dataRows[i].id %>" class="waves-effect waves-light btn red">Delete</a></td>
         </tr>
         <%
         }
