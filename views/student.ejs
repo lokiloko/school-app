@@ -49,7 +49,7 @@
               <%= dataRows[i].fullname() %>
             </td>
             <td><a href="/students/edit/<%= dataRows[i].id %>" class="waves-effect waves-light btn light-blue">Edit</a></td>
-            <td><a href="/students/delete/<%= dataRows[i].id %>" class="waves-effect waves-light btn red">Delete</a></td>
+            <td><a onclick="return confirm('Are you sure?')" href="/students/delete/<%= dataRows[i].id %>" class="waves-effect waves-light btn red">Delete</a></td>
             <td><a href="/students/<%= dataRows[i].id %>/addsubject" class="waves-effect waves-light btn">AddSubject</a></td>
           </tr>
           <%
