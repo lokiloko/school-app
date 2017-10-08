@@ -1,4 +1,5 @@
 'use strict';
+const fullName = require('../helpers/fullName.js');
 module.exports = (sequelize, DataTypes) => {
   var Student = sequelize.define('Student', {
     first_name: DataTypes.STRING,
@@ -23,15 +24,13 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     }
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
   })
+  Student.associate = function(models) {
+    models.Student.belongsToMany(models.Subject, {through: 'Subject_Student'});
+    models.Student.hasMany(models.Subject_Student)
+  }
   Student.prototype.fullname = function () {
-    return this.first_name + " " + this.last_name;
+    return fullName(this.first_name, this.last_name);
   }
   return Student;
 };

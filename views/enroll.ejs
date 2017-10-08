@@ -1,0 +1,53 @@
+<% include partials/header.ejs %>
+  <br />
+  <div class="rows">
+    <div class="col s12 center">
+      <div class="card-panel teal lighten-2">
+        <a href="/subjects" class="btn-floating btn-large waves-effect waves-light red left"><i class="material-icons left">backspace</i></a>
+        <%= pageTitle %>
+      </div>
+    </div>
+  </div>
+  <br>
+  <h2 class="center"><%= dataRows.subject_name %></h2>
+  <table id="example" class="table responsive centered highlight bordered striped light-green" border="5">
+    <thead>
+      <tr>
+        <td>No</td>
+        <td>Students Name</td>
+        <td>Score</td>
+        <td>Desc</td>
+      </tr>
+    </thead>
+    <tbody>
+      <%
+        for(var i=0;i<studentsRows.length;i++){
+          %>
+        <tr>
+          <td>
+            <%= i+1 %>
+          </td>
+          <td>
+            <%= studentsRows[i].Student.fullname()%>
+          </td>
+          <%
+              if(studentsRows[i].score > 0){
+            %>
+            <td>
+              <%= studentsRows[i].score %>
+            </td>
+            <%
+          } else {
+            %>
+              <td><a href="/subjects/<%= studentsRows[i].id %>/givescore" class="waves-effect waves-light btn green">Give Score</a></td>
+              <%
+            }
+            %>
+                <td><%= studentsRows[i].scoreLetter() %></td>
+        </tr>
+        <%
+        }
+      %>
+    </tbody>
+  </table>
+  <% include partials/footer.ejs %>

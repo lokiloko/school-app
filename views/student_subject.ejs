@@ -1,5 +1,5 @@
 <% include partials/header.ejs %>
-<br />
+  <br />
   <div class="rows">
     <div class="col s12 center">
       <div class="card-panel teal lighten-2">
@@ -8,22 +8,32 @@
       </div>
     </div>
   </div>
-  <br >
-  <div class="rows">
-  <form action="/students/add" method="post">
+  <br>
+  <form class="" action="/students/<%= dataRows.id %>/addsubject" method="post">
     <div class="input-field">
-      <input type="text" name="first_name" placeholder="First Name">
+      <input type="text" name="first_name" value="<%= dataRows.first_name %>" disabled>
       <label for="first_name">First Name</label>
     </div>
     <div class="input-field">
-      <input type="text" name="last_name" placeholder="Last Name">
+      <input type="text" name="last_name" value="<%= dataRows.last_name %>" disabled>
       <label for="last_name">Last Name</label>
     </div>
     <div class="input-field">
-      <input type="text" name="email" placeholder=" Email ">
+      <input type="text" name="email" value="<%= dataRows.email %>" disabled>
       <label for="email">Email</label>
+    </div>
+    <div class="input-field">
+      <select name="SubjectId">
+        <%
+          for(var i = 0;i<subjectRows.length;i++){
+            %>
+            <option value="<%= subjectRows[i].id %>"><%= subjectRows[i].subject_name %></option>
+            <%
+          }
+        %>
+      </select>
+      <label for="SubjectId"><b>Choose a Subject</b></label>
     </div>
     <input type="submit" value="SUBMIT" class="waves-effect waves-light btn">
   </form>
-  </div>
   <% include partials/footer.ejs %>

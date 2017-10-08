@@ -1,31 +1,54 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Teacher</title>
-  </head>
-  <body>
-    <a href="/">Back</a>
-    <br />
-    <table border="5">
+<% include partials/header.ejs %>
+  <h2><%= message %></h2>
+  <br />
+  <div class="rows">
+    <div class="col s12 center">
+      <div class="card-panel teal lighten-2">
+        <a href="/" class="btn-floating btn-large waves-effect waves-light red left"><i class="material-icons left">backspace</i></a>
+        <%= pageTitle %>
+      </div>
+    </div>
+  </div>
+  <br>
+  <table id="example" class="table responsive centered highlight bordered striped light-green" border="5" align="center">
+    <thead>
       <tr>
         <td>ID</td>
         <td>First Name</td>
         <td>Last Name</td>
         <td>Email</td>
+        <td>Subject</td>
+        <td>Action</td>
+        <td></td>
       </tr>
+    </thead>
+    <tbody>
       <%
         for(var i = 0;i<dataRows.length;i++) {
           %>
-          <tr>
-            <td><%= dataRows[i].id %></td>
-            <td><%= dataRows[i].first_name %></td>
-            <td><%= dataRows[i].last_name %></td>
-            <td><%= dataRows[i].email %></td>
-          </tr>
-          <%
+        <tr>
+          <td>
+            <%= dataRows[i].id %>
+          </td>
+          <td>
+            <%= dataRows[i].first_name %>
+          </td>
+          <td>
+            <%= dataRows[i].last_name %>
+          </td>
+          <td>
+            <%= dataRows[i].email %>
+          </td>
+          <td>
+            <%= dataRows[i].subject == null ? "unassigned" : dataRows[i].subject.subject_name %>
+          </td>
+          <td><a href="/teachers/edit/<%= dataRows[i].id %>" class="waves-effect waves-light btn light-blue">Edit</a></td>
+          <td><a href="/teachers/delete/<%= dataRows[i].id %>" class="waves-effect waves-light btn red">Delete</a></td>
+        </tr>
+        <%
         }
       %>
-    </table>
-  </body>
-</html>
+    </tbody>
+  </table>
+  <a href="/teachers/add" class="waves-effect waves-light btn">Add new Teacher<i class="material-icons left">add</i></a>
+  <% include partials/footer.ejs %>

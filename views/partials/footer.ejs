@@ -1,0 +1,56 @@
+</div>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.material.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#example').DataTable({
+      "order":[]
+    });
+  });
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.10.1/sweetalert2.all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.10.1/sweetalert2.common.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.10.1/sweetalert2.common.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.10.1/sweetalert2.common.min.js.map"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.10.1/sweetalert2.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.10.1/sweetalert2.min.js"></script>
+
+<%
+  if(hasOwnProperty('message')){
+  if(message == 'success'){
+%>
+  <script>
+    swal({
+      title: 'Success!',
+      text: 'Success Update Data',
+      type: 'success',
+      confirmButtonText: 'OK'
+    })
+  </script>
+  <%
+  }
+  else if(message.toLowerCase().indexOf('error')> -1){
+    %>
+    <script>
+      swal({
+        title: 'Error!',
+        text: 'Oopss, Something wrong :(',
+        type: 'error',
+        confirmButtonText: 'OK'
+      })
+    </script>
+    <%
+  }
+}
+else{
+
+}
+%>
+      </body>
+
+      </html>

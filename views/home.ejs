@@ -1,12 +1,17 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Home</title>
-  </head>
-  <body>
-    <a href="/subjects">Subject</a>
-    <a href="/teachers">Teacher</a>
-    <a href="/students">Student</a>
-  </body>
-</html>
+<% include partials/header.ejs %>
+  <br />
+  <h2></h2>
+  <div class="rows">
+    <div class="col s12 center">
+      <div class="card-panel teal lighten-2">
+        <%= pageTitle %>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="collection">
+    <a href="/subjects" class="collection-item">Subject</a>
+    <a href="/students" class="collection-item">Student</a>
+    <a href="/teachers" class="collection-item">Teacher</a>
+  </div>
+  <% include partials/footer.ejs %>

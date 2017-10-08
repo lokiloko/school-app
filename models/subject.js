@@ -2,12 +2,11 @@
 module.exports = (sequelize, DataTypes) => {
   var Subject = sequelize.define('Subject', {
     subject_name: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
-  });
+  })
+  Subject.associate = function(models) {
+    models.Subject.hasMany(models.Teacher);
+    models.Subject.belongsToMany(models.Student, {through: 'Subject_Student'});
+    models.Subject.hasMany(models.Subject_Student)
+  }
   return Subject;
 };
