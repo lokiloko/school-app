@@ -12,7 +12,7 @@
   <div class="rows">
   <form action="/subjects/edit/<%= dataRows.id %>" method="post">
     <div class="input-field">
-      <input type="text" name="subject_name" placeholder=" Subject Name " value="<%= dataRows.subject_name %>">
+      <input type="text" name="subject_name" placeholder=" Subject Name " value="<%= dataRows.subject_name %>" required>
       <label for="subject_name">Subject Name</label>
     </div>
     <input type="submit" value="SUBMIT" class="waves-effect waves-light btn">

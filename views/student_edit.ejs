@@ -12,15 +12,15 @@
   <form action="/students/edit/<%= dataRows.id %>" method="post">
     <input type="hidden" name="id" value="<%= dataRows.id %>">
     <div class="input-field">
-      <input type="text" name="first_name" placeholder="First Name" value="<%= dataRows.first_name %>">
+      <input type="text" name="first_name" placeholder="First Name" value="<%= dataRows.first_name %>" required>
       <label for="first_name">First Name</label>
     </div>
     <div class="input-field">
-      <input type="text" name="last_name" placeholder="Last Name" value="<%= dataRows.last_name %>">
+      <input type="text" name="last_name" placeholder="Last Name" value="<%= dataRows.last_name %>" required>
       <label for="last_name">Last Name</label>
     </div>
     <div class="input-field">
-      <input type="text" name="email" placeholder=" Email " value="<%= dataRows.email %>">
+      <input type="text" name="email" placeholder=" Email " value="<%= dataRows.email %>" required>
       <label for="email">Email</label>
     </div>
     <input type="submit" value="SUBMIT" class="waves-effect waves-light btn">
