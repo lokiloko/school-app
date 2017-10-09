@@ -3,7 +3,16 @@ const router = express.Router();
 const session = require('express-session');
 const model = require('../models');
 
-router.get('/', function(req, res) {
+function isLogin(req, res, next){
+  if(req.session.username){
+    res.redirect('/');
+  }
+  else{
+    next()
+  }
+}
+
+router.get('/', isLogin, function(req, res) {
   var message = "";
   if(req.query.message){
     message+= req.query.message;
@@ -15,11 +24,16 @@ router.get('/', function(req, res) {
 })
 
 router.post('/', function(req, res) {
-  model.User.findOne({where: {username: req.body.username, password: req.body.password}}).then((data)=>{
+  model.User.findOne({where: {username: req.body.username}}).then((data)=>{
     if(data){
-      req.session.username = data.username;
-      req.session.role = data.role;
-      res.redirect('/?message=successlogin');
+      if(data.checkHashPassword(req.body.password)){
+        req.session.username = data.username;
+        req.session.role = data.role;
+        res.redirect('/?message=successlogin');
+      }
+      else{
+        throw new Error('Username and Password combination not found');
+      }
     }
     else{
       throw new Error('Username and Password combination not found');

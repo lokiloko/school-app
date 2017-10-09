@@ -1,0 +1,36 @@
+<% include partials/header.ejs %>
+<h2><%= message %></h2>
+  <br>
+  <div class="rows">
+    <div class="col s12 center">
+      <div class="card-panel teal lighten-2">
+        <a href="/users" class="btn-floating btn-large waves-effect waves-light red left"><i class="material-icons left">backspace</i></a>
+        <%= pageTitle %>
+      </div>
+    </div>
+  </div>
+  <br>
+  <form action="/users/add" method="post">
+    <div class="input-field">
+      <input type="text" name="username" placeholder="UserName">
+      <label for="username">Username</label>
+    </div>
+    <div class="input-field">
+      <input type="password" name="password" placeholder="Password">
+      <label for="password">Password</label>
+    </div>
+    <div class="input-field">
+      <input type="password" name="re_password" placeholder=" Re-Password ">
+      <label for="re_password">Re-Password</label>
+    </div>
+    <div class="input-field">
+      <select name="role">
+        <option value="headmaster">HeadMaster</option>
+        <option value="academic">Academic</option>
+        <option value="teacher">Teacher</option>
+      </select>
+      <label for="role">Role</label>
+    </div>
+    <input type="submit" value="SUBMIT" class="waves-effect waves-light btn">
+  </form>
+  <% include partials/footer.ejs %>

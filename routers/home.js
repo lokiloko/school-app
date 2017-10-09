@@ -3,7 +3,6 @@ const router = express.Router();
 const session = require('express-session');
 
 router.use(function(req, res, next){
-  console.log(req.session);
   if(req.session && req.session.username) {
     next()
   }else {

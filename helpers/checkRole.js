@@ -1,21 +1,24 @@
 function checkRole(page, role) {
-  switch(page) {
-    case 'students':
-      if(role != null){
+  switch(role) {
+    case 'headmaster':
+      if(page == 'subjects' || page == 'students' || page =='teachers' || page=='users'){
         return true;
       }
       return false;
     break;
-    case 'teachers':
-      if(role == 'headmaster'){
+    case 'teacher':
+      if(page == 'students'){
         return true;
       }
       return false;
     break;
-    case 'subjects':
-      if(role == 'headmaster' || role=='academic'){
+    case 'academic':
+      if(page == 'subjects' || page =='students'){
         return true;
       }
+      return false;
+    break;
+    default:
       return false;
     break;
   }

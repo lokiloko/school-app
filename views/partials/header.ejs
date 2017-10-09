@@ -27,6 +27,10 @@
       <li><a href="/teachers">List Teachers</a></li>
       <li><a href="/teachers/add">Add New Teacher</a></li>
     </ul>
+    <ul id="dropdownUser" class="dropdown-content">
+      <li><a href="/users">List Users</a></li>
+      <li><a href="/users/add">Add New User</a></li>
+    </ul>
 
     <nav>
       <div class="nav-wrapper blue">
@@ -44,6 +48,7 @@
               if(role == 'headmaster') {
             %>
                   <li><a class="dropdown-button" href="#!" data-activates="dropdownTeacher">Teacher<i class="material-icons right">arrow_drop_down</i></a></li>
+                  <li><a class="dropdown-button" href="#!" data-activates="dropdownUser">User<i class="material-icons right">arrow_drop_down</i></a></li>
                   <%
               }
               %>
