@@ -43,4 +43,31 @@ router.post('/', function(req, res) {
   })
 })
 
+router.get('/signup', isLogin, function(req, res) {
+  var message = "";
+  if(req.query.message){
+    message+= req.query.message;
+  }
+  res.render('signup', {
+    pageTitle: 'Sign Up',
+    message:message
+  });
+})
+
+router.post('/signup', function(req, res){
+  if(req.body.password != req.body.re_password){
+    res.redirect('/users/add?message=error password missmatch')
+  }
+  model.User.create({
+    username:req.body.username,
+    password:req.body.password,
+    role:req.body.role,
+    salt:"1"
+  }).then(()=>{
+    res.redirect('/users?message=success');
+  }).catch((err)=>{
+    res.redirect('/users?message='+err);
+  })
+})
+
 module.exports = router;

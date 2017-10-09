@@ -25,6 +25,7 @@ app.use(session({
   saveUninitialized: true
 }))
 
+
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/', home);

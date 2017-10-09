@@ -9,8 +9,9 @@ router.get('/', function(req, res){
   for(let i = 8;i>0;i--){
     salt+= alphaNumeric[Math.floor(Math.random() * alphaNumeric.length)];
   }
-  var hash = crypto.createHmac('sha256', salt).update('password').digest('hex');
-  res.send(hash);
+  var hash = crypto.createHmac('sha256', salt).update('magenotwhy').digest('hex');
+  console.log(hash)
+  console.log(salt)
 })
 
 module.exports = router;
