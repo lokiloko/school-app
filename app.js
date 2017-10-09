@@ -33,4 +33,4 @@ app.use('/teachers', teachers);
 app.use('/subjects', subjects);
 app.use('/students', students);
 
-app.listen(3000);
+app.listen(process.env.PORT || '3000')
