@@ -34,11 +34,12 @@ router.post('/add', function(req, res){
   if(req.body.password != req.body.re_password){
     res.redirect('/users/add?message=error password missmatch')
   }
+  var salt = model.User.generateSalt();
   model.User.create({
     username:req.body.username,
     password:req.body.password,
     role:req.body.role,
-    salt:"1"
+    salt:salt
   }).then(()=>{
     res.redirect('/users?message=success');
   }).catch((err)=>{

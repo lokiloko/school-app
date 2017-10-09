@@ -18,7 +18,8 @@ module.exports = (sequelize, DataTypes) => {
             where: {salt:value}
           }).then(function(data){
             if(data){
-              value = cek(value, next);
+              value = cryptoString();
+              cek(value, next);
             }
             return next();
           }).catch(function(err){
@@ -28,6 +29,10 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   })
+  User.generateSalt = function() {
+    var salt = cryptoString();
+    return salt;
+  }
   User.prototype.checkHashPassword = function(password) {
     var hash = crypto.createHmac('sha256', this.salt).update(password).digest('hex');
     if(hash == this.password){
@@ -38,11 +43,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.beforeCreate((user)=>{
-    var salt = cryptoString();
-    console.log(salt);
-    var hash = crypto.createHmac('sha256', salt).update(user.password).digest('hex');
+    var hash = crypto.createHmac('sha256', user.salt).update(user.password).digest('hex');
     user.password = hash;
-    user.salt = salt;
   })
   return User;
 };
