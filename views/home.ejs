@@ -10,8 +10,18 @@
   </div>
   <br>
   <div class="collection">
-    <a href="/subjects" class="collection-item">Subject</a>
-    <a href="/students" class="collection-item">Student</a>
-    <a href="/teachers" class="collection-item">Teacher</a>
+    <% if(role == 'headmaster' || role == 'academic'){ %>
+      <a href="/subjects" class="collection-item">Subject</a>
+      <% }
+    if(role == 'teacher' || role == 'headmaster' || role == 'academic'){
+  %>
+        <a href="/students" class="collection-item">Student</a>
+        <% }
+  if(role == 'headmaster') {
+%>
+          <a href="/teachers" class="collection-item">Teacher</a>
+          <%
+}
+%>
   </div>
   <% include partials/footer.ejs %>

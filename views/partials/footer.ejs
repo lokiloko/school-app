@@ -46,6 +46,30 @@
     </script>
     <%
   }
+  else if(message == 'successlogout') {
+    %>
+    <script>
+      swal({
+        title: 'Success!',
+        text: 'Success Logout',
+        type: 'success',
+        confirmButtonText: 'OK'
+      })
+    </script>
+    <%
+  }
+  else if(message =='successlogin'){
+    %>
+    <script>
+      swal({
+        title: 'Success!',
+        text: 'Success Login Bung',
+        type: 'success',
+        confirmButtonText: 'OK'
+      })
+    </script>
+  <%
+  }
 }
 else{
 

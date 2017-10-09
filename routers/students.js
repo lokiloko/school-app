@@ -1,6 +1,16 @@
 const express = require('express');
+const session = require('express-session');
 const router = express.Router();
 const model = require('../models');
+const checkRole = require('../helpers/checkRole.js');
+
+router.use(function(req, res, next){
+  if(checkRole('students', req.session.role)){
+    next()
+  }else{
+    res.redirect('/');
+  }
+})
 
 router.get('/', function(req, res){
   model.Student.findAll({order:['first_name']}).then((data)=>{
@@ -8,12 +18,12 @@ router.get('/', function(req, res){
     if(req.query.message){
       message+= req.query.message
     }
-    res.render('student', {dataRows:data, message:message, pageTitle:'Student List'});
+    res.render('student', {dataRows:data, message:message, pageTitle:'Student List', role:req.session.role});
   })
 })
 
 router.get('/add', function(req, res){
-  res.render('student_add',{pageTitle:'Add New Student'});
+  res.render('student_add',{pageTitle:'Add New Student', role:req.session.role});
 })
 
 router.post('/add', function(req, res){
@@ -26,7 +36,7 @@ router.post('/add', function(req, res){
 
 router.get('/edit/:id', function(req, res){
   model.Student.findById(req.param('id')).then((data)=>{
-    res.render('student_edit', {dataRows:data, pageTitle:'Edit Student '+data.fullname()});
+    res.render('student_edit', {dataRows:data, pageTitle:'Edit Student '+data.fullname(), role:req.session.role});
   }).catch((err)=>{
     console.log(err);
   })
@@ -52,7 +62,7 @@ router.get('/delete/:id', function(req, res){
 router.get('/:id/addsubject', function(req, res){
   model.Student.findById(req.param('id')).then((rows)=>{
     model.Subject.findAll().then((data)=>{
-      res.render('student_subject', {subjectRows:data, dataRows:rows, pageTitle:'Add Subject '+rows.fullname()});
+      res.render('student_subject', {subjectRows:data, dataRows:rows, pageTitle:'Add Subject '+rows.fullname(), role:req.session.role});
     })
   })
 })

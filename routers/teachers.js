@@ -1,6 +1,16 @@
 const express = require('express');
+const session = require('express-session');
 const router = express.Router();
 const model = require('../models');
+const checkRole = require('../helpers/checkRole.js');
+
+router.use(function(req, res, next){
+  if(checkRole('teachers', req.session.role)){
+    next()
+  }else{
+    res.redirect('/');
+  }
+})
 
 router.get('/', function(req, res) {
   var message = "";
@@ -17,7 +27,7 @@ router.get('/', function(req, res) {
         row['subject'] = result[index];
       })
       res.render('teacher', {
-        dataRows: rows, message:message, pageTitle:'Teachers List'
+        dataRows: rows, message:message, pageTitle:'Teachers List', role:req.session.role
       })
     })
   })
@@ -32,7 +42,7 @@ router.get('/edit/:id', function(req, res) {
     res.render('teacher_edit', {
       dataRows: result[0],
       subjectRows: result[1],
-      pageTitle:'Edit Teacher '+result[0].fullname()
+      pageTitle:'Edit Teacher '+result[0].fullname(), role:req.session.role
     })
   })
 })
@@ -60,7 +70,7 @@ router.get('/add', function(req, res) {
   model.Subject.findAll().then((rows) => {
     res.render('teacher_add', {
       subjectRows: rows,
-      pageTitle:'Add new Teacher'
+      pageTitle:'Add new Teacher', role:req.session.role
     });
   })
 })
